@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: lowca-maszyn
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1 --proxy-headers
+    autoDeployTrigger: "off"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: APP_PASSWORD
+        generateValue: true
+      - key: DATA_DIR
+        value: /tmp/lowca-data
+      - key: EPHEMERAL_STORAGE
+        value: "true"
+    # No disk, paid database, external paid API or extra background worker.
+    # Browser backup preserves a local library across free-server restarts.

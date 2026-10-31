@@ -1,0 +1,3 @@
+{$DOMAIN} {
+    reverse_proxy lowca:8000
+}

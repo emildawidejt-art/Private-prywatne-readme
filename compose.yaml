@@ -1,0 +1,13 @@
+services:
+  lowca:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - lowca-data:/data
+    environment:
+      BRAVE_SEARCH_API_KEY: ${BRAVE_SEARCH_API_KEY:-}
+      APP_PASSWORD: ${APP_PASSWORD:-}
+    restart: unless-stopped
+volumes:
+  lowca-data:

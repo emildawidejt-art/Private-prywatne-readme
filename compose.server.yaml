@@ -1,0 +1,28 @@
+services:
+  lowca:
+    build: .
+    volumes:
+      - lowca-data:/data
+    environment:
+      APP_PASSWORD: ${APP_PASSWORD:?Ustaw hasło w pliku .env}
+      PUBLIC_ORIGIN: https://${DOMAIN:?Ustaw domenę w pliku .env}
+      BRAVE_SEARCH_API_KEY: ${BRAVE_SEARCH_API_KEY:-}
+    restart: unless-stopped
+  https:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - lowca
+    restart: unless-stopped
+volumes:
+  lowca-data:
+  caddy-data:
+  caddy-config:

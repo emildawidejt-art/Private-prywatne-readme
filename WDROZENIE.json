@@ -1,0 +1,15 @@
+{
+  "application": "Łowca Maszyn",
+  "published": false,
+  "verified_public_url": null,
+  "paid_operations_performed": false,
+  "prepared_target": "Render Free",
+  "pending": [
+    "Utworzenie bezpłatnego konta i usługi Render przez właściciela",
+    "Potwierdzenie udanego wdrożenia i działającego adresu HTTPS",
+    "Sprawdzenie dostępu do portali z docelowego serwera",
+    "Dodanie ikony w Chrome na fizycznym telefonie Android"
+  ],
+  "source_repository": "https://github.com/emildawidejt-art/Private-prywatne-readme",
+  "source_branch": "main"
+}
